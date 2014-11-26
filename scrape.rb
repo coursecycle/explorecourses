@@ -34,7 +34,20 @@ def getCourses(m, collection)
         end
         attributes = course.at_css("div.courseAttributes")
         unless attributes.nil?
-            c["attributes"] = attributes.content.strip()
+            data = attributes.content.strip()
+            data = data.gsub(/\r\n/m, "")
+            data_items = data.split('|')
+            attributes_hash = Hash.new
+            for data_item in data_items
+                data_item_details = data_item.strip().split(/[:,]/)
+                key = data_item_details[0]
+                data = Array.new
+                for i in 1..(data_item_details.length - 1)
+                    data << data_item_details[i].strip()
+                end
+                attributes_hash[key] = data
+            end
+            c["attributes"] = attributes_hash
         end
         collection.insert(c)
         count += 1
