@@ -20,7 +20,7 @@ In addition, [MongoDB](https://mongodb.com/) is used to store information, so it
 
 This scraper is released under the MIT License (MIT).
 
-Copyright (c) 2014 Courseriver
+Copyright (c) 2014 CourseCycle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
