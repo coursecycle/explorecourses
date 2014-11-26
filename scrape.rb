@@ -41,11 +41,26 @@ def getCourses(m, collection)
             for data_item in data_items
                 data_item_details = data_item.strip().split(/[:,]/)
                 key = data_item_details[0]
-                data = Array.new
-                for i in 1..(data_item_details.length - 1)
-                    data << data_item_details[i].strip()
+                if key == "Units"
+                    data = Hash.new
+                    units_bounds = data_item_details[1].split("-")
+                    data["lower"] = units_bounds[0].strip().to_i
+                    data["upper"] = units_bounds[units_bounds.length - 1].strip().to_i
+                    attributes_hash[key] = data
+                elsif key == "Grading"
+                    grading_types = data_item_details[1].split("or")
+                    data = Array.new
+                    grading_types.each do |grading_type|
+                        data << grading_type.strip()
+                    end
+                    attributes_hash[key] = data
+                else
+                    data = Array.new
+                    for i in 1..(data_item_details.length - 1)
+                        data << data_item_details[i].strip()
+                    end
+                    attributes_hash[key] = data
                 end
-                attributes_hash[key] = data
             end
             c["attributes"] = attributes_hash
         end
