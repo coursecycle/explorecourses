@@ -64,6 +64,12 @@ def getCourses(m, collection)
             end
             c["attributes"] = attributes_hash
         end
+        instructors = Array.new
+        instructors_data = course.css(".courseAttributes a")
+        instructors_data.each do |instructor_data|
+            instructors << instructor_data.content
+        end
+        c["instructors"] = instructors
         collection.insert(c)
         count += 1
         if count % 100 == 0
