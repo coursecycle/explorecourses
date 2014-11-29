@@ -4,7 +4,8 @@ This tool scrapes all the data from [ExploreCourses](http://explorecourses.stanf
 
 #### Payload
 
-* `parse.rb` will do everything for you.
+* `scrape.rb` uses an HTML scraping approach.
+* `parser.rb` uses an XML approach based on a dump of the ExploreCourses database through their API. You can get a copy of the latest XML [here](http://static.rogr.me/coursecycle/data.tar)
 
 #### Requirements
 
@@ -20,7 +21,7 @@ In addition, [MongoDB](https://mongodb.com/) is used to store information, so it
 
 This scraper is released under the MIT License (MIT).
 
-Copyright (c) 2014 CourseCycle
+Copyright (c) 2014 Coursecycle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -40,14 +40,14 @@ def getCourses(m, collection)
             attributes_hash = Hash.new
             for data_item in data_items
                 data_item_details = data_item.strip().split(/[:,]/)
-                key = data_item_details[0]
-                if key == "Units"
+                key = data_item_details[0].downcase
+                if key == "units"
                     data = Hash.new
                     units_bounds = data_item_details[1].split("-")
                     data["lower"] = units_bounds[0].strip().to_i
                     data["upper"] = units_bounds[units_bounds.length - 1].strip().to_i
                     attributes_hash[key] = data
-                elsif key == "Grading"
+                elsif key == "grading"
                     grading_types = data_item_details[1].split("or")
                     data = Array.new
                     grading_types.each do |grading_type|
