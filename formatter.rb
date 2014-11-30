@@ -39,6 +39,7 @@ courses.each do |course|
             j["year"] = term[0]
             j["start_time"] = section.at_css("startTime").content
             j["end_time"] = section.at_css("endTime").content
+            j["component"] = section.at_css("component").content
             j["location"] = section.at_css("location").content
             j["days"] = section.at_css("days").content.split(" ")
             j["instructors"] = Array.new
